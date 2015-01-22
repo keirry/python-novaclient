@@ -342,13 +342,15 @@ class Server(base.Resource):
 
     def live_migrate(self, host=None,
                      block_migration=False,
-                     disk_over_commit=False):
+                     disk_over_commit=False,
+                     post_copy=False):
         """
         Migrates a running instance to a new machine.
         """
         self.manager.live_migrate(self, host,
                                   block_migration,
-                                  disk_over_commit)
+                                  disk_over_commit,
+                                  post_copy)
 
     def reset_state(self, state='error'):
         """
@@ -1135,7 +1137,8 @@ class ServerManager(base.BootingManagerWithFind):
         for k in keys:
             self._delete("/servers/%s/metadata/%s" % (base.getid(server), k))
 
-    def live_migrate(self, server, host, block_migration, disk_over_commit):
+    def live_migrate(self, server, host, block_migration, disk_over_commit,
+                     post_copy):
         """
         Migrates a running instance to a new machine.
 
@@ -1148,7 +1151,8 @@ class ServerManager(base.BootingManagerWithFind):
         self._action('os-migrateLive', server,
                      {'host': host,
                       'block_migration': block_migration,
-                      'disk_over_commit': disk_over_commit})
+                      'disk_over_commit': disk_over_commit,
+                      'post_copy': post_copy})
 
     def reset_state(self, server, state='error'):
         """

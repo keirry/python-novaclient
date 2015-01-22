@@ -3389,11 +3389,18 @@ def _print_aggregate_details(aggregate):
     '--disk_over_commit',
     action='store_true',
     help=argparse.SUPPRESS)
+@cliutils.arg(
+    '--post-copy',
+    action='store_true',
+    dest='post_copy',
+    default=False,
+    help=_('True in case of post_copy migration. (Default=False)'))
 def do_live_migration(cs, args):
     """Migrate running server to a new machine."""
     _find_server(cs, args.server).live_migrate(args.host,
                                                args.block_migrate,
-                                               args.disk_over_commit)
+                                               args.disk_over_commit,
+                                               args.post_copy)
 
 
 @cliutils.arg(
