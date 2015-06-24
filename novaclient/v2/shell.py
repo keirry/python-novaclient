@@ -1395,7 +1395,8 @@ def do_list(cs, args):
             'Status',
             'Task State',
             'Power State',
-            'Networks'
+            'Networks',
+            'DR Protection'
         ]
         # If getting the data for all tenants, print
         # Tenant ID as well
