@@ -61,7 +61,7 @@ class DisasterRecoveryManager(base.Manager):
 
         action = 'drRecover'
         body = {action: None}
-        url= '/os-hosts/%s/action' % datacenter
+        url= '/servers/%s/action' % datacenter
         return self.api.client.post(url, body=body)
 
 
