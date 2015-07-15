@@ -91,5 +91,7 @@ def do_recover(cs, args):
     cs.disaster_recovery.recover(args.datacenter)
     print "OK"
 
+manager_class = DisasterRecoveryManager
+name = 'disaster_recovery'
 
 
