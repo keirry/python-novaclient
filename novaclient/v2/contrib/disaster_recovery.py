@@ -70,7 +70,8 @@ class DisasterRecoveryManager(base.Manager):
     help=_('ID of the VM to protect.'))
 def do_protect_vm(cs, args):
     """Protect a VM."""
-    cs.disaster_recovery.protect_vm(args.server)
+    server = utils.find_resource(cs.servers, args.server)
+    cs.disaster_recovery.protect_vm(server)
     print "OK"
 
 

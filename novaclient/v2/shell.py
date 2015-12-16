@@ -1379,6 +1379,7 @@ def do_list(cs, args):
                ('OS-EXT-STS:task_state', 'task_state'),
                ('OS-EXT-SRV-ATTR:instance_name', 'instance_name'),
                ('OS-EXT-STS:power_state', 'power_state'),
+               ('OS-EXT-DR:dr_state', 'dr_state'),
                ('hostId', 'host_id')]
     _translate_keys(servers, convert)
     _translate_extended_states(servers)
@@ -1396,7 +1397,7 @@ def do_list(cs, args):
             'Task State',
             'Power State',
             'Networks',
-            'DR Protection'
+            'DR State'
         ]
         # If getting the data for all tenants, print
         # Tenant ID as well
